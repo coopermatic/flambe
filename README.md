@@ -52,3 +52,4 @@ irc.freenode.net.
 [issue]: https://github.com/aduros/flambe/issues
 [forum]: https://groups.google.com/forum/#!forum/flambe
 [email me]: mailto:b@aduros.com
+   (Test)
