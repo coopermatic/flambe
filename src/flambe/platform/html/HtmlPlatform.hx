@@ -436,6 +436,9 @@ class HtmlPlatform
                 depth: false,
                 // http://blog.tojicode.com/2013/12/failifmajorperformancecaveat-with-great.html
                 failIfMajorPerformanceCaveat: true,
+				
+				// Added by Tim
+				antialias: true
             });
             if (gl != null) {
 #if !flambe_disable_canvas
