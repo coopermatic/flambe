@@ -20,7 +20,7 @@ class HtmlUtil
     public static var SHOULD_HIDE_MOBILE_BROWSER =
 #if !flambe_disable_hide_mobile_browser
         Browser.window.top == Browser.window &&
-        ~/Mobile(\/.*)? Safari/.match(Browser.navigator.userAgent);
+        ( ~/Mobile(\/.*)? Safari/.match(Browser.navigator.userAgent) || ~/fban/i.match( Browser.navigator.userAgent ) );
 #else
         false;
 #end
