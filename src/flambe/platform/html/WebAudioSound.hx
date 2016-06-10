@@ -71,17 +71,8 @@ class WebAudioSound extends BasicAsset<WebAudioSound>
     {
         if (_detectSupport) {
             _detectSupport = false;
-
-            var AudioContext = HtmlUtil.loadExtension("AudioContext").value;
-            if (AudioContext != null) {
-                ctx = untyped __new__(AudioContext);
-                gain = createGain();
-                gain.connect(ctx.destination);
-
-                System.volume.watch(function(volume, _) {
-                    gain.gain.value = volume;
-                });
-            }
+			
+            resetAudioContext();
         }
 
         return ctx != null;
@@ -102,9 +93,36 @@ class WebAudioSound extends BasicAsset<WebAudioSound>
         } else {
             node.noteOn(time);
         }
+		
+		//trace("Sample rate: " + ctx.sampleRate + " / " + node.buffer.sampleRate);
     }
+	
+	// Used to reset the browsers audio context. We need to do this on iOS Safari to get round a bug with playback sample rates.
+	public static function resetAudioContext() : Void
+	{
+		//trace("Resetting audio context");
+		if (_volumeListener != null)
+		{
+			_volumeListener.dispose();
+			_volumeListener = null;
+		}
+		
+		var AudioContext = HtmlUtil.loadExtension("AudioContext").value;
+		if (AudioContext != null) {
+			ctx = untyped __new__(AudioContext);
+			gain = createGain();
+			gain.connect(ctx.destination);
+			
+			_volumeListener = System.volume.watch(function(volume, _) {
+				gain.gain.value = volume;
+			});
+		}
+		
+	}
 
     private static var _detectSupport = true;
+	private static var _volumeListener : Disposable;
+	
 }
 
 private class WebAudioPlayback
