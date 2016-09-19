@@ -1,0 +1,8 @@
+To run on Haxe 3.2.0 
+
+The required Haxelibs need to be set to the following version numbers (As at 10th June 2016)
+
+format – 3.2.0 (Note that if you install 3.2.1, the build process fails)
+hxsl – 2.0.6 (OK - Latest)
+layout – 1.2.1 (OK - Latest)
+swf – 2.2.0 (OK - Latest)
