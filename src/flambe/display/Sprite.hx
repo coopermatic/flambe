@@ -336,7 +336,28 @@ class Sprite extends Component
         }
         return _viewMatrix;
     }
+	
+	/**
+     * Converts a point from view (stage) coordinates to local coordinates.
+     * @param result A Point instance to re-use instead of allocating a new one.
+     */
+    public function viewToLocal (viewX :Float, viewY :Float, ?result :Point) :Point
+    { 
+		// TOFIX: Implement this function - It does not work properly!
+		return new Point(viewX, viewY);
+	}
 
+    /**
+     * Converts a point from local coordinates to view (stage) coordinates.
+     * @param result A Point instance to re-use instead of allocating a new one.
+     */
+    public function localToView (localX :Float, localY :Float, ?result :Point) :Point
+    {
+		// TOFIX: Implement this function - It does not work properly!
+		
+		return new Point(localX, localY);
+	}
+	
     /**
      * Chainable convenience method to set the anchor position.
      * @returns This instance, for chaining.

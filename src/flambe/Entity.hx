@@ -46,6 +46,12 @@ using flambe.util.BitSets;
 
     /** This entity's first component. */
     public var firstComponent (default, null) :Component = null;
+	
+	/**
+     * Whether this entity should be updated and rendered. Defaults to true.
+     */
+	// TOFIX: This does nothing at the moment. - Need implementing.
+    public var active :Bool = true;
 
     public function new ()
     {
